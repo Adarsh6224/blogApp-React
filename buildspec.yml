@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16 # Specify the Node.js version (use the version your project needs)
+    commands:
+      - echo "Installing dependencies..."
+      - npm install -g npm # Update npm to the latest version
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase..."
+      - npm install # Install project dependencies
+  build:
+    commands:
+      - echo "Starting build phase..."
+      - npm run build # Build the React app
+  post_build:
+    commands:
+      - echo "Starting post-build phase..."
+      - echo "Build completed successfully."
+
+artifacts:
+  files:
+    - '**/*' # Include all files in the build folder
+  base-directory: build # The folder that contains the built files
+  discard-paths: no
